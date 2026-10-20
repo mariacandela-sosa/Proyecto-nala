@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mía y los Peces Perdidos 🐱🐟</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(180deg, #0b3d5c 0%, #1e6091 50%, #4a90b8 100%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3), transparent);
+    position: relative;
+  }
+  header h1 {
+    font-size: 3.5rem;
+    text-shadow: 3px 3px 0 #ff7e5f, 6px 6px 15px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+  }
+  header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-style: italic;
+  }
+
+  /* Olas animadas */
+  .waves {
+    position: relative;
+    height: 80px;
+    overflow: hidden;
+    background: transparent;
+  }
+  .wave {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 80px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'><path d='M0,60 C150,100 350,20 600,60 C850,100 1050,20 1200,60 L1200,120 L0,120 Z' fill='%23f4e4c1'/></svg>") repeat-x;
+    animation: wave 10s linear infinite;
+  }
+  .wave:nth-child(2) {
+    opacity: 0.6;
+    animation-duration: 15s;
+    animation-direction: reverse;
+    bottom: -10px;
+  }
+  @keyframes wave {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  section {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 40px;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  }
+
+  h2 {
+    color: #ffd166;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #ff7e5f;
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+
+  .historia p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .feature {
+    background: rgba(255,255,255,0.15);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .feature:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.25);
+  }
+  .feature .icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  .feature h3 {
+    color: #ffd166;
+    margin-bottom: 10px;
+  }
+
+  .personajes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .personaje {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
+  .personaje:nth-child(2) { background: linear-gradient(135deg, #4a90b8, #1e6091); }
+  .personaje:nth-child(3) { background: linear-gradient(135deg, #a8e6cf, #56c596); }
+  .personaje .emoji {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  /* Mini juego */
+  #game-container {
+    text-align: center;
+  }
+  canvas {
+    background: linear-gradient(180deg, #87ceeb 0%, #4a90b8 60%, #d4a373 100%);
+    border: 4px solid #ffd166;
+    border-radius: 10px;
+    max-width: 100%;
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  }
+  .game-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 15px 0;
+    font-size: 1.2rem;
+  }
+  .game-info span {
+    background: rgba(0,0,0,0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin: 5px;
+  }
+  button {
+    background: #ff7e5f;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px 5px;
+    transition: all 0.3s;
+    font-weight: bold;
+  }
+  button:hover {
+    background: #feb47b;
+    transform: scale(1.05);
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    background: rgba(0,0,0,0.3);
+    margin-top: 40px;
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🐱 Nala's Fish Quest 🐟</h1>
+  <p>Una aventura felina en el puerto</p>
+</header>
+
+<div class="waves">
+  <div class="wave"></div>
+  <div class="wave"></div>
+</div>
+
+<main>
+
+  <section class="historia">
+    <h2>📖 La Historia</h2>
+    <p>En un pequeño puerto pesquero bañado por el sol del atardecer, vive <strong>Nala</strong>, una gata astuta y valiente de pelaje atigrado que conoce cada rincón de los muelles como la palma de su pata.</p>
+    <p>Una mañana, un grupo de pescadores distraídos dejó caer su preciada captura al suelo mientras descargaban el bote. Los peces resbalaron por la madera mojada y quedaron esparcidos por todo el muelle... ¡y Nala los quiere todos para ella!</p>
+    <p>Pero cuidado: la lluvia de la noche anterior dejó <strong>enormes charcos resbaladizos</strong> por todos lados. Nala deberá saltar, correr y esquivar con agilidad felina para recuperar los peces sin mojarse las patitas. ¿Podrá conseguirlos todos?</p>
+  </section>
+
+  <section>
+    <h2>🎮 Mecánicas del Juego</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="icon">🐾</div>
+        <h3>Salta y Corre</h3>
+        <p>Controla a Nala con las flechas o WASD. ¡Salta con la barra espaciadora!</p>
+      </div>
+      <div class="feature">
+        <div class="icon">💧</div>
+        <h3>Esquiva los Charcos</h3>
+        <p>Los charcos son resbaladizos. Si tocas uno, perderás un pez.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🐟</div>
+        <h3>Recoge Peces</h3>
+        <p>Junta todos los peces que puedas, algunos van a ser mas especiales que otros.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">⏱️</div>
+        <h3>Contra el Tiempo</h3>
+        <p>tiene que agarrar los peces en un tiempo determinado</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🎭 Personajes</h2>
+    <div class="personajes">
+      <div class="personaje">
+        <span class="emoji">🐱</span>
+        <h3>Nala</h3>
+        <p>La protagonista. Ágil, curiosa y siempre hambrienta.</p>
+      </div>
+      <div class="personaje">
+        <span class="emoji">👨‍🌾</span>
+        <h3>Los Pescadores</h3>
+        <p>Despistados pero de buen corazón. ¡No se dan cuenta de nada!</p>
+      </div>
+      
+  </section>
+
+
+</main>
+
+<footer>
+  <p>🌊 Hecho con amor en el puerto 🌊</p>
+  <p style="margin-top:10px; opacity:0.7;">© 2026 Nala y los Peces Perdidos - Todos los peces reservados</p>
+</footer>
+
+</body>
+</html>
