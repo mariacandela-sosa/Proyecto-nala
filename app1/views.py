@@ -5,6 +5,9 @@ from .forms import RegistrationForm
 
 
 def inicio(request):
+    if not request.user.is_authenticated:
+        return render(request, 'app1/welcome.html', {'welcome_page': True})
+
     return render(request, 'app1/index.html')
 
 

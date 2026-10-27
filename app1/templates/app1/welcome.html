@@ -1,0 +1,22 @@
+{% extends 'app1/componentes/plantilla.html' %}
+
+{% block title %}Bienvenidos | Nala's Fish Quest{% endblock %}
+
+{% block content %}
+<main class="welcome-main">
+  <section class="welcome-card">
+    <div class="welcome-illustration" aria-hidden="true">🐱 🐟</div>
+    <p class="welcome-eyebrow">Una aventura felina en el puerto</p>
+    <h1>¡Bienvenidos a Nala's Fish Quest!</h1>
+    <p class="welcome-description">
+      Acompaña a Nala en una emocionante aventura entre muelles, charcos y peces.
+      Inicia sesión para entrar a la plantilla y descubrir todo lo que te espera.
+    </p>
+    <div class="welcome-actions">
+      <a class="welcome-button" href="{% url 'login' %}">Iniciar sesión y entrar</a>
+      <a class="welcome-button welcome-button-secondary" href="{% url 'registro' %}">Crear una cuenta</a>
+    </div>
+    <p class="welcome-note">¿Ya tienes una cuenta? ¡Tu aventura te está esperando!</p>
+  </section>
+</main>
+{% endblock %}

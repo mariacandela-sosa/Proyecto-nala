@@ -1,10 +1,12 @@
 <nav class="site-nav" aria-label="Navegación principal">
   <a class="brand" href="{% url 'hola' %}">🐱 Nala's Fish Quest</a>
-  <div class="nav-links">
-    <a href="{% url 'hola' %}#historia">La historia</a>
-    <a href="{% url 'hola' %}#mecanicas">El juego</a>
-    <a href="{% url 'hola' %}#personajes">Personajes</a>
-  </div>
+  {% if not welcome_page %}
+    <div class="nav-links">
+      <a href="{% url 'hola' %}#historia">La historia</a>
+      <a href="{% url 'hola' %}#mecanicas">El juego</a>
+      <a href="{% url 'hola' %}#personajes">Personajes</a>
+    </div>
+  {% endif %}
   <div class="nav-account">
     {% if user.is_authenticated %}
       <span class="welcome-user">¡Hola, {{ user.username }}!</span>

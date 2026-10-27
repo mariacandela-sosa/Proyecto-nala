@@ -18,6 +18,15 @@ class AuthenticationTests(TestCase):
             password=self.password,
         )
 
+    def test_anonymous_visitors_see_welcome_instead_of_game_template(self):
+        response = self.client.get(reverse('hola'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "¡Bienvenidos a Nala's Fish Quest!")
+        self.assertContains(response, 'Iniciar sesión y entrar')
+        self.assertContains(response, 'Crear una cuenta')
+        self.assertNotContains(response, '🎮 Mecánicas del Juego')
+
     def test_login_page_matches_site_and_shows_navbar(self):
         response = self.client.get(reverse('login'))
 
@@ -37,6 +46,7 @@ class AuthenticationTests(TestCase):
         home = self.client.get(reverse('hola'))
         self.assertContains(home, f'¡Hola, {self.username}!')
         self.assertContains(home, 'Cerrar sesión')
+        self.assertContains(home, '🎮 Mecánicas del Juego')
 
     def test_invalid_credentials_show_error(self):
         response = self.client.post(
