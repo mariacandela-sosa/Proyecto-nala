@@ -1,0 +1,39 @@
+{% extends 'app1/componentes/plantilla.html' %}
+
+{% block title %}Crear cuenta | Nala's Fish Quest{% endblock %}
+
+{% block content %}
+<main class="auth-main">
+  <section class="auth-card">
+    <div class="auth-icon" aria-hidden="true">🐾</div>
+    <h1>Únete a la aventura</h1>
+    <p class="auth-intro">Crea tu cuenta para acompañar a Nala en el puerto.</p>
+
+    <form method="post" class="auth-form">
+      {% csrf_token %}
+
+      <label for="{{ form.username.id_for_label }}">Nombre de usuario</label>
+      {{ form.username }}
+      {% if form.username.errors %}<p class="field-error">{{ form.username.errors|striptags }}</p>{% endif %}
+
+      <label for="{{ form.email.id_for_label }}">Correo electrónico</label>
+      {{ form.email }}
+      {% if form.email.errors %}<p class="field-error">{{ form.email.errors|striptags }}</p>{% endif %}
+
+      <label for="{{ form.password1.id_for_label }}">Contraseña</label>
+      {{ form.password1 }}
+      {% if form.password1.errors %}<p class="field-error">{{ form.password1.errors|striptags }}</p>{% endif %}
+
+      <label for="{{ form.password2.id_for_label }}">Confirma tu contraseña</label>
+      {{ form.password2 }}
+      {% if form.password2.errors %}<p class="field-error">{{ form.password2.errors|striptags }}</p>{% endif %}
+
+      {% if form.non_field_errors %}<p class="form-error" role="alert">{{ form.non_field_errors|striptags }}</p>{% endif %}
+      <button type="submit">Crear cuenta</button>
+    </form>
+
+    <p class="auth-switch">¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a></p>
+    <a class="back-link" href="{% url 'hola' %}">← Volver al inicio</a>
+  </section>
+</main>
+{% endblock %}

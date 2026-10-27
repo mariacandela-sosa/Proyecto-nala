@@ -1,0 +1,36 @@
+{% extends 'app1/componentes/plantilla.html' %}
+
+{% block title %}Iniciar sesión | Nala's Fish Quest{% endblock %}
+
+{% block content %}
+<main class="auth-main">
+  <section class="auth-card">
+    <div class="auth-icon" aria-hidden="true">🐱</div>
+    <h1>¡Qué bueno verte!</h1>
+    <p class="auth-intro">Inicia sesión para volver a la aventura de Nala.</p>
+
+    {% if form.errors %}
+      <p class="form-error" role="alert">El usuario o la contraseña no son correctos. Inténtalo de nuevo.</p>
+    {% endif %}
+
+    <form method="post" class="auth-form">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}">
+
+      <label for="{{ form.username.id_for_label }}">Nombre de usuario</label>
+      {{ form.username }}
+      {% if form.username.errors %}<p class="field-error">{{ form.username.errors|striptags }}</p>{% endif %}
+
+      <label for="{{ form.password.id_for_label }}">Contraseña</label>
+      {{ form.password }}
+      {% if form.password.errors %}<p class="field-error">{{ form.password.errors|striptags }}</p>{% endif %}
+
+      <button type="submit">Entrar a la aventura</button>
+    </form>
+
+    <a class="back-link" href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a>
+    <p class="auth-switch">¿Aún no tienes cuenta? <a href="{% url 'registro' %}">Regístrate</a></p>
+    <a class="back-link" href="{% url 'hola' %}">← Volver al inicio</a>
+  </section>
+</main>
+{% endblock %}
